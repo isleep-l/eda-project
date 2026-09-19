@@ -1,0 +1,171 @@
+{
+  "dut_name": "dma_xfer_public",
+  "version": "v1.0",
+  "total_bins": 92,
+  "coverpoints": [
+    { "name": "ch0_state", "type": "basic", "signal": "ch0_state", "source": "top", "difficulty": "easy",
+      "bins": [
+        {"name": "idle0", "value": 0},
+        {"name": "active0", "value": 1},
+        {"name": "done0", "value": 2}
+      ]},
+    { "name": "ch1_state", "type": "basic", "signal": "ch1_state", "source": "top", "difficulty": "easy",
+      "bins": [
+        {"name": "idle1", "value": 0},
+        {"name": "active1", "value": 1},
+        {"name": "done1", "value": 2}
+      ]},
+    { "name": "ch2_state", "type": "basic", "signal": "ch2_state", "source": "top", "difficulty": "easy",
+      "bins": [
+        {"name": "idle2", "value": 0},
+        {"name": "active2", "value": 1},
+        {"name": "done2", "value": 2}
+      ]},
+    { "name": "ch3_state", "type": "basic", "signal": "ch3_state", "source": "top", "difficulty": "easy",
+      "bins": [
+        {"name": "idle3", "value": 0},
+        {"name": "active3", "value": 1},
+        {"name": "done3", "value": 2}
+      ]},
+    { "name": "arb_winner", "type": "basic", "signal": "arb_winner", "source": "top", "difficulty": "medium",
+      "bins": [
+        {"name": "win0", "value": 0},
+        {"name": "win1", "value": 1},
+        {"name": "win2", "value": 2},
+        {"name": "win3", "value": 3}
+      ]},
+    { "name": "dir_dir", "type": "basic", "signal": "dir_dir", "source": "derived", "difficulty": "easy",
+      "bins": [
+        {"name": "mem_mem", "value": 0},
+        {"name": "mem_io", "value": 1}
+      ]},
+    { "name": "cfg_burst", "type": "basic", "signal": "cfg_burst", "source": "derived", "difficulty": "medium",
+      "bins": [
+        {"name": "burst0", "value": 0},
+        {"name": "burst1", "value": 1},
+        {"name": "burst2", "value": 2},
+        {"name": "burst3", "value": 3},
+        {"name": "burst4", "value": 4},
+        {"name": "burst5", "value": 5},
+        {"name": "burst6", "value": 6},
+        {"name": "burst7", "value": 7}
+      ]},
+    { "name": "active_ch", "type": "basic", "signal": "active_ch", "source": "derived", "difficulty": "easy",
+      "bins": [
+        {"name": "ch0_act", "value": 0},
+        {"name": "ch1_act", "value": 1},
+        {"name": "ch2_act", "value": 2},
+        {"name": "ch3_act", "value": 3}
+      ]},
+    { "name": "arb_conflict", "type": "condition", "signal": "arb_conflict", "source": "derived", "difficulty": "medium",
+      "bins": [
+        {"name": "no_conflict", "value": 0},
+        {"name": "conflict", "value": 1}
+      ]},
+    { "name": "hold_active", "type": "condition", "signal": "hold", "source": "top", "difficulty": "medium",
+      "bins": [
+        {"name": "hold_off", "value": 0},
+        {"name": "hold_on", "value": 1}
+      ]},
+    { "name": "cfg_saddr_boundary", "type": "boundary", "signal": "cfg_saddr", "source": "derived", "difficulty": "medium",
+      "bins": [
+        {"name": "saddr_zero", "value": 0},
+        {"name": "saddr_one", "value": 1},
+        {"name": "saddr_upper_m1", "value": 4294967294},
+        {"name": "saddr_allones", "value": 4294967295}
+      ]},
+    { "name": "cfg_daddr_boundary", "type": "boundary", "signal": "cfg_daddr", "source": "derived", "difficulty": "medium",
+      "bins": [
+        {"name": "daddr_zero", "value": 0},
+        {"name": "daddr_one", "value": 1},
+        {"name": "daddr_upper_m1", "value": 4294967294},
+        {"name": "daddr_allones", "value": 4294967295}
+      ]},
+    { "name": "cfg_len_boundary", "type": "boundary", "signal": "cfg_len", "source": "derived", "difficulty": "medium",
+      "bins": [
+        {"name": "len_zero", "value": 0},
+        {"name": "len_one", "value": 1},
+        {"name": "len_upper_m1", "value": 65534},
+        {"name": "len_allones", "value": 65535}
+      ]},
+    { "name": "xfer_done_ok", "type": "temporal", "signal": "done_ok", "source": "top", "difficulty": "hard",
+      "bins": [
+        {"name": "done_ok_0", "value": 0},
+        {"name": "done_ok_1", "value": 1},
+        {"name": "done_ok_2", "value": 2},
+        {"name": "done_ok_3", "value": 3}
+      ]},
+    { "name": "arb_x_hold", "type": "cross", "signal": "arb_winner,hold", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "win0_hold", "cross": [0, 1]},
+        {"name": "win0_nohold", "cross": [0, 0]},
+        {"name": "win1_hold", "cross": [1, 1]},
+        {"name": "win1_nohold", "cross": [1, 0]},
+        {"name": "win2_hold", "cross": [2, 1]},
+        {"name": "win2_nohold", "cross": [2, 0]},
+        {"name": "win3_hold", "cross": [3, 1]},
+        {"name": "win3_nohold", "cross": [3, 0]}
+      ]},
+    { "name": "done_ch_cross", "type": "cross", "signal": "done_ok,active_ch", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "done_ch0", "cross": [0, 0]},
+        {"name": "done_ch1", "cross": [1, 1]},
+        {"name": "done_ch2", "cross": [2, 2]},
+        {"name": "done_ch3", "cross": [3, 3]}
+      ]},
+    { "name": "len_x_state", "type": "cross", "signal": "cfg_len,ch0_state", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "len1_done", "cross": [1, 2]},
+        {"name": "len_hi_idle", "cross": [65535, 0]}
+      ]},
+    { "name": "addr_x_dir", "type": "cross", "signal": "cfg_saddr,dir_dir", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "saddr0_mem", "cross": [0, 0]},
+        {"name": "saddr0_io", "cross": [0, 1]},
+        {"name": "saddr1_mem", "cross": [1, 0]},
+        {"name": "saddr1_io", "cross": [1, 1]},
+        {"name": "saddr_hi_mem", "cross": [4294967295, 0]},
+        {"name": "saddr_hi_io", "cross": [4294967295, 1]}
+      ]},
+    { "name": "burst_x_hld", "type": "cross", "signal": "cfg_burst,hold", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "burst0_nohold", "cross": [0, 0]},
+        {"name": "burst0_hold", "cross": [0, 1]},
+        {"name": "burst7_nohold", "cross": [7, 0]},
+        {"name": "burst7_hold", "cross": [7, 1]},
+        {"name": "burst1_nohold", "cross": [1, 0]},
+        {"name": "burst1_hold", "cross": [1, 1]}
+      ]},
+    { "name": "dir_x_done", "type": "cross", "signal": "dir_dir,done_ok", "source": "derived", "difficulty": "hardest",
+      "bins": [
+        {"name": "mem_done0", "cross": [0, 0]},
+        {"name": "mem_done1", "cross": [0, 1]},
+        {"name": "io_done2", "cross": [1, 2]},
+        {"name": "io_done3", "cross": [1, 3]}
+      ]},
+    { "name": "seq_full_handshake", "type": "seq_hit", "seq": "seq1", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_multi_beat", "type": "seq_hit", "seq": "seq2", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_ok_uninterrupted", "type": "seq_hit", "seq": "seq3", "source": "derived", "difficulty": "hardest",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_hold_persist", "type": "seq_hit", "seq": "seq4", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_hold_then_ok", "type": "seq_hit", "seq": "seq5", "source": "derived", "difficulty": "hardest",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_arb_resolved", "type": "seq_hit", "seq": "seq6", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_arb_cont", "type": "seq_hit", "seq": "seq7", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_done_observed", "type": "seq_hit", "seq": "seq8", "source": "derived", "difficulty": "easy",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_idle_stable", "type": "seq_hit", "seq": "seq9", "source": "derived", "difficulty": "medium",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_quick_done", "type": "seq_hit", "seq": "seq10", "source": "derived", "difficulty": "medium",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_chan_switch", "type": "seq_hit", "seq": "seq11", "source": "derived", "difficulty": "hard",
+      "bins": [{"name": "hit", "value": 1}]},
+    { "name": "seq_done_consistent", "type": "seq_hit", "seq": "seq12", "source": "derived", "difficulty": "hardest",
+      "bins": [{"name": "hit", "value": 1}]}
+  ]
+}
